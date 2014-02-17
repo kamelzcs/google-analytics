@@ -2,4 +2,5 @@
 .Rhistory
 .RData
 *.csv
-.Rpoj
+*.Rproj
+.directory
