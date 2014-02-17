@@ -11,9 +11,9 @@ ids<-profiles[1]
 start.date = "2014-01-01"
 end.date = today()-1
 speed = ga$getData(30593836, start.date, end.date, 
-                   metrics = "ga:visits,ga:pageViews,ga:exits,ga:pageviewsPerVisit,ga:entranceRate,ga:avgTimeOnpage,ga:exitRate", dimensions = "ga:pagePath",
-                   sort = "-ga:pageViews", filters = "", segment = "",
-                   start = 1, max = 150)
+                   metrics = "ga:visits,ga:pageViews", dimensions = "ga:previousPagePath,ga:nextPagePath",
+                   sort = "-ga:pageViews", filters = "ga:previousPagePath=@recruits,ga:nextPagePath=@recruits", segment = "",
+                   start = 1, max = 100)
 
-write.csv(speed,"/home/kamel/Data/Analytics/")
+#write.csv(speed,"/home/kamel/Data/Analytics/recruits_page_navigation.csv")
 
