@@ -11,8 +11,8 @@ ids<-profiles[1]
 start.date = "2014-01-01"
 end.date = today()-1
 speed = ga$getData(30593836, start.date, end.date, 
-                   metrics = "ga:visits,ga:pageviews", dimensions = "ga:date", 
-                   sort = "", filters = "", segment = "",
-                   start = 1, max = 1000)
+                   metrics = "ga:visits,ga:pageViews", dimensions = "ga:pagePath",
+                   sort = "-ga:pageViews", filters = "", segment = "",
+                   start = 1, max = 30)
 
 speed
