@@ -40,8 +40,16 @@ for (i in 1:2){
 merged.df <- merge(LL[[1]], LL[[2]], all=TRUE)
 
 outputName = "smart_pc"
+startTime = strsplit(start.date, "-")
+endTime = strsplit(end.date, "-")
+startTimeStamp = paste(startTime[[1]], collapse="")
+startTimeStamp
+endTimeStamp = paste(endTime[[1]], collapse="")
+endTimeStamp
+timeStamp = paste(startTimeStamp, endTimeStamp, sep="-")
 nowPath = paste(outputName, csv_file, sep="-")
-nowPath = paste(currentTime, nowPath, sep="-")
+nowPath = paste(timeStamp, nowPath, sep="-")
+nowPath
 total_path = paste(dir_name, nowPath, sep= "/")
 total_path
 write.csv(merged.df, total_path)
