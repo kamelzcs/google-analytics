@@ -2,7 +2,7 @@ library(tools)
 library(devtools)
 library(rga)
 
-key_words = "diarypost/diary"
+key_words = "diary/[0-9]+/photos"
 smart_pc_list = list(30593836, 26708871)
 list_name = list("smart", "pc");
 
@@ -27,17 +27,17 @@ profiles
 ids<-profiles[1]
 start.date = "2014-04-01"
 end.date = "2014-04-30"
-filter_words = paste("ga:nextPagePath=@", key_words, sep="")
+filter_words = paste("ga:nextPagePath=~", key_words, sep="")
 filter_words
 LL = list()
-for (i in 1:2){
+for (i in 1:1){
     LL[[i]] = ga$getData(smart_pc_list[[i]], start.date, end.date,
                        metrics = "ga:visits,ga:pageViews,ga:exits,ga:pageviewsPerVisit,ga:entranceRate,ga:avgTimeOnpage,ga:exitRate",dimensions = "ga:previousPagePath,ga:nextPagePath",
                        sort = "-ga:pageViews", filters = filter_words, segment = "",
                        start = 1, max = 150)
 }
 # Merge files, create metrics
-merged.df <- merge(LL[[1]], LL[[2]], all=TRUE)
+#merged.df <- merge(LL[[1]], LL[[2]], all=TRUE)
 
 outputName = "smart_pc"
 startTime = strsplit(start.date, "-")
@@ -53,4 +53,4 @@ nowPath
 total_path = paste(dir_name, nowPath, sep= "/")
 total_path
 write.csv(LL[[1]], total_path)
-write.table(LL[[2]], file = total_path, append=TRUE, sep=",", col.names=TRUE)
+#write.table(LL[[2]], file = total_path, append=TRUE, sep=",", col.names=TRUE)
